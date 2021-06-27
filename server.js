@@ -9,7 +9,26 @@ const path = require("path");
 
 const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+// ** MIDDLEWARE ** //
+const whitelist = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "http://localhost:8080",
+];
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin);
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable");
+      callback(null, true);
+    } else {
+      console.log("Origin rejected");
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+app.use(cors(corsOptions));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -22,8 +41,16 @@ app.use(function (req, res, next) {
   next();
 });
 
-// Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, "../client/build")));
+const path = require("path");
+if (process.env.NODE_ENV === "production") {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, "client/build")));
+
+  // Handle React routing, return all requests to React app
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
+}
 
 /*
  *
@@ -122,9 +149,4 @@ app.get("/api", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`app is running on port ${PORT}`);
-});
-
-// All other GET requests not handled before will return our React app
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
