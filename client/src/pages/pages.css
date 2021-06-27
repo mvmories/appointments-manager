@@ -1,0 +1,57 @@
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+
+.timerContainer {
+  width: 475px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  background-color: #d3d3d3;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.form label {
+  margin-bottom: 30px;
+}
+
+.form input {
+  display: block;
+  margin-top: 10px;
+}
+
+.form .color {
+  color: black;
+}
+
+.staff-main {
+  display: flex;
+}
+/* 
+.staff-list {
+  width: 30vw;
+  height: 89vh;
+  overflow: hidden;
+  background-color: brown;
+  padding: 30px;
+  text-align: center;
+}
+.staff-crud {
+  width: 70vw;
+  background-color: green;
+  height: 89vh;
+  overflow: hidden;
+  padding: 30px;
+  text-align: center;
+}
+
+.staff-crud input {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  width: 70%;
+  padding: 7px;
+} */

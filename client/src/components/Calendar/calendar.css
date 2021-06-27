@@ -1,0 +1,10 @@
+.fc {
+  /* the calendar root */
+  height: 700px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.fc-event {
+  cursor: pointer;
+}
