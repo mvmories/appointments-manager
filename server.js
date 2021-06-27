@@ -14,6 +14,7 @@ const whitelist = [
   "http://localhost:3000",
   "http://localhost:3001",
   "http://localhost:8080",
+  "https://blooming-gorge-42759.heroku",
 ];
 const corsOptions = {
   origin: function (origin, callback) {
