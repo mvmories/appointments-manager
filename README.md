@@ -2,7 +2,7 @@
 
 ## Description
 
-text
+Fullstack app with CRUD functionality for staff, clients and appointments - later displayed as events in a dynamic calendar.
 
 ## To Run The Project
 
